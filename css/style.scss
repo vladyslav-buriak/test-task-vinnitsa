@@ -1,0 +1,387 @@
+/* Reset and base styles  */
+* {
+  padding: 0px;
+  margin: 0px;
+  border: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Links */
+
+a,
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* Common */
+
+aside,
+nav,
+footer,
+header,
+section,
+main {
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+ul,
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+address {
+  font-style: normal;
+}
+
+/* Form */
+
+input,
+textarea,
+button,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background-color: transparent;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button,
+input[type="submit"] {
+  display: inline-block;
+  box-shadow: none;
+  background-color: transparent;
+  background: none;
+  cursor: pointer;
+}
+
+input:focus,
+input:active,
+button:focus,
+button:active {
+  outline: none;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+label {
+  cursor: pointer;
+}
+
+legend {
+  display: block;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  // border: 1px solid red;
+}
+
+//Var
+$sm: 1rem;
+$md: 2rem;
+$lg: 2.5rem;
+
+$PRIMARY_COLOR: #000;
+$SECONDARY_COLOR: #fff;
+
+//MIXIN
+
+@mixin text($font, $size, $weight, $color) {
+  font-family: $font;
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+}
+
+//COMON
+
+.btn {
+  @include text(Roboto, 12px, 400, $PRIMARY_COLOR);
+  border: 1px solid $PRIMARY_COLOR;
+  padding: 7px 36px;
+  transition: all ease 0.5s;
+
+  &:hover {
+    cursor: pointer;
+    background: #000;
+    color: #fff;
+  }
+  &:focus {
+    transform: scale(1.1);
+  }
+}
+
+//HEADER
+.header-inner {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: inherit;
+}
+.logo {
+  @include text(Italianno, $lg, 400, $PRIMARY_COLOR);
+  margin-top: 2rem;
+  position: relative;
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -0.2rem;
+    left: 0;
+    width: 200px;
+    height: 1px;
+    background: #fcac45;
+  }
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+  margin-top: $lg;
+
+  &__links {
+    @include text(Roboto, $sm, 400, $PRIMARY_COLOR);
+    line-height: 1rem;
+    position: relative;
+
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: -0.2rem;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #fcac45;
+      transition: all ease 0.3s;
+    }
+
+    &:hover {
+      &:before {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.header-bottom {
+  background-image: url("../images/river-6519572_1280\ 1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: inherit;
+  height: 485px;
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    @include text(Italianno, 4rem, 400, $SECONDARY_COLOR);
+  }
+
+  &__subtitle {
+    @include text(Roboto, 1rem, 400, $SECONDARY_COLOR);
+  }
+}
+
+//ABOUT
+.about-inner {
+  max-width: 986px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 200px auto 166px;
+
+  &__title {
+    @include text(Italianno, $md, 400, $PRIMARY_COLOR);
+    line-height: 2.5rem;
+    position: relative;
+    width: 100px;
+
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 95%;
+      height: 1px;
+      background: #fcac45;
+    }
+  }
+
+  &__text {
+    @include text(Roboto, 14px, 400, $PRIMARY_COLOR);
+    margin-top: 1.5rem;
+    line-height: 16px;
+    max-width: 437px;
+    width: 100%;
+  }
+
+  &__btn {
+    margin-top: 43px;
+  }
+}
+
+//MENU
+
+.menu-inner__line {
+  width: 100%;
+  height: 1px;
+  background: #fcac45;
+  margin: 53px 0;
+}
+.menu-inner {
+  max-width: 986px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+
+  &__title {
+    @include text(Italianno, 35px, 400, $PRIMARY_COLOR);
+    text-align: center;
+    margin-bottom: 90px;
+  }
+
+  .menu-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+    // &:before {
+    //   content: "";
+    //   display: block;
+    //   position: absolute;
+    //   bottom: -55px;
+    //   left: 0;
+    //   width: 100%;
+    //   height: 1px;
+    //   background: #fcac45;
+    // }
+
+    &__description {
+      text-align: center;
+    }
+
+    &__title {
+      @include text(Italianno, 45px, 400, $PRIMARY_COLOR);
+      line-height: 56px;
+    }
+
+    &__text {
+      @include text(Roboto, 15px, 400, $PRIMARY_COLOR);
+      line-height: 17px;
+      max-width: 495px;
+    }
+
+    &__price {
+      @include text(Roboto, 17px, 400, $PRIMARY_COLOR);
+      line-height: 20px;
+      margin-top: 22px;
+    }
+
+    &__btn {
+      width: 12.5%;
+      margin: 81px auto 0;
+    }
+  }
+
+  .menu-content + .menu-content {
+    margin-top: 105px;
+  }
+}
+
+//FOOTER
+.footer {
+  &__line {
+    width: 100%;
+    height: 1px;
+    background: #fcac45;
+    margin-top: 119px;
+  }
+
+  &__copy {
+    @include text(Roboto, 11px, 400, $PRIMARY_COLOR);
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 869px;
+    width: 100%;
+    margin: 1rem auto 0;
+  }
+
+  .footer-content__line {
+    height: 163px;
+    width: 1px;
+    background-color: #fcac45;
+  }
+
+  .footer-block__title {
+    @include text(Italianno, 27px, 400, $PRIMARY_COLOR);
+    line-height: 33.75px;
+  }
+
+  .footer-block__text,
+  .footer-block__link {
+    @include text(Roboto, 12px, 400, $PRIMARY_COLOR);
+    margin-top: 20px;
+  }
+
+  .footer-block__link {
+    display: block;
+
+    &:hover {
+      color: orangered;
+    }
+  }
+}
